@@ -1,0 +1,32 @@
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/testdb
+#    username: root
+#    password: root
+##    url: jdbc:mysql://acm-th-alp-activities-agg-db.ca89yzb8acjs.ap-southeast-1.rds.amazonaws.com:3306/activities_agg?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+##    username: activitiesagg_rw
+##    password: Welcome1
+#    hikari:
+#      connection-timeout: 10000
+#      idle-timeout: 10000
+#      minimum-idle: 1
+#      maximum-pool-size: 10
+  application:
+    name: basic
+
+logging:
+  pattern.console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%-40.40logger{1}){cyan} %msg %n"
+  level:
+    com.pivotal.rabbitmq.gettingstarted: debug
+    com.pivotal.rabbitmq.stream: warn
+
+role: publisher
+
+rabbit:
+  default-endpoint-name: standalone
+  endpoints:
+    standalone:
+      host: localhost
+      virtualHost: tmn-th-alpha
+      group: consumer
