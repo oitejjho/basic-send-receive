@@ -13,7 +13,7 @@ public class BasicSendReceiveApplication {
 		SpringApplication.run(BasicSendReceiveApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	@ConditionalOnProperty(name = "role", havingValue = "help", matchIfMissing = true)
 	public CommandLineRunner help() {
 		return (args) -> {
@@ -21,6 +21,6 @@ public class BasicSendReceiveApplication {
 			System.out.println("./run --role=publisher [--exchange=reactive-text] [--count=10] [--delay=10s]");
 			System.out.println("./run --role=consumer [--queue=reactive-text] [--exchange=reactive-text]");
 		} ;
-	}
+	}*/
 
 }

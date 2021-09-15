@@ -1,7 +1,5 @@
-/*
 package com.example.basicsendreceive;
 
-import com.phoosop.reactive.model.entity.UserEntity;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
@@ -17,4 +15,3 @@ public interface UserRepository extends ReactiveSortingRepository<UserEntity, Lo
     Mono<Long> count();
 
 }
-*/

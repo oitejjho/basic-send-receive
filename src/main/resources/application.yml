@@ -29,4 +29,22 @@ rabbit:
     standalone:
       host: localhost
       virtualHost: tmn-th-alpha
-      group: consumer
+      username: producer
+      password: producer
+
+
+r2dbc:
+  #  hostname: host.docker.internal
+  hostname: localhost
+  database: test
+  port: 3307
+  username: root
+  password: root
+  connection-timeout: 10
+  pool:
+    initial-size: 2
+    max-size: 8
+    max-idle-time: 90
+    max-acquire-time: 5
+    max-create-connection-time: 10
+    max-life-time: 1800

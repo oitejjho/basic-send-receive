@@ -1,5 +1,6 @@
 package com.example.basicsendreceive;
 
+import com.pivotal.rabbitmq.topology.ExchangeType;
 import com.pivotal.rabbitmq.topology.TopologyBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,20 +12,19 @@ import java.util.function.Consumer;
 public class TopologyConfiguration {
 
     @Value("${exchange:numbers}")
-    String NUMBERS;
+    String exchangeName;
     @Value("${queue:numbers}")
-    String CONSUMER;
+    String queueName;
 
     @Bean
     public Consumer<TopologyBuilder> topology() {
-        // @formatter:off
         return (builder) -> builder
-                .declareExchange(NUMBERS)
+                .declareExchange(exchangeName)
+                .type(ExchangeType.direct)
                 .and()
-                .declareQueue(CONSUMER)
-                .boundTo(NUMBERS);
+                .declareQueue(queueName)
+                    .boundTo(exchangeName);
 //                .withMaxLength(100);
-        // @formatter:on
     }
 
 }

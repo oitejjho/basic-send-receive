@@ -1,8 +1,6 @@
-/*
 package com.example.basicsendreceive;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,4 +35,3 @@ public class UserEntity {
     private Integer age;
 
 }
-*/
