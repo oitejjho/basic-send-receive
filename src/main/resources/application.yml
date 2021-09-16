@@ -1,17 +1,7 @@
+server:
+  port: 8070
+
 spring:
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3306/testdb
-#    username: root
-#    password: root
-##    url: jdbc:mysql://acm-th-alp-activities-agg-db.ca89yzb8acjs.ap-southeast-1.rds.amazonaws.com:3306/activities_agg?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
-##    username: activitiesagg_rw
-##    password: Welcome1
-#    hikari:
-#      connection-timeout: 10000
-#      idle-timeout: 10000
-#      minimum-idle: 1
-#      maximum-pool-size: 10
   application:
     name: basic
 
@@ -31,20 +21,3 @@ rabbit:
       virtualHost: tmn-th-alpha
       username: producer
       password: producer
-
-
-r2dbc:
-  #  hostname: host.docker.internal
-  hostname: localhost
-  database: test
-  port: 3307
-  username: root
-  password: root
-  connection-timeout: 10
-  pool:
-    initial-size: 2
-    max-size: 8
-    max-idle-time: 90
-    max-acquire-time: 5
-    max-create-connection-time: 10
-    max-life-time: 1800

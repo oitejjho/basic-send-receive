@@ -11,9 +11,9 @@ import java.util.function.Consumer;
 @Configuration
 public class TopologyConfiguration {
 
-    @Value("${exchange:numbers}")
+    @Value("${exchange:emails}")
     String exchangeName;
-    @Value("${queue:numbers}")
+    @Value("${queue:emails}")
     String queueName;
 
     @Bean

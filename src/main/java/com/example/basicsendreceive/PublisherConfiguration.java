@@ -20,7 +20,7 @@ public class PublisherConfiguration {
     private static final Logger log = LoggerFactory.getLogger(PublisherConfiguration.class);
     private final RabbitEndpointService rabbit;
     private final Consumer<TopologyBuilder> topology;
-    @Value("${queue:numbers}")
+    @Value("${queue:emails}")
     String queueName;
 
 
@@ -32,7 +32,27 @@ public class PublisherConfiguration {
     @Bean
     public Disposable publisher() {
 
-        Flux<Integer> integers = Flux
+        Flux<String> integers = Flux
+                .range(1, 2)
+                .map(val -> "oitejjho" + val + "@gmail.com");
+//                .doOnNext(data -> System.out.println(String.format("Sending: %s", data)));
+
+        ProducerStream<String> producerStream = rabbit
+                .declareTopology(topology)
+                .createProducerStream(String.class)
+                .route()
+                .toExchange(queueName)
+                .then();
+
+        return producerStream
+                .send(integers)
+                .delayElements(Duration.ofMillis(5))
+                .doOnNext(data -> System.out.println(String.format("Sent: %s", data)))
+                .subscribe();
+
+
+
+        /*Flux<Integer> integers = Flux
                 .range(1, 10)
                 .doOnNext(data -> System.out.println(String.format("Sending: %s", data)));
 
@@ -47,7 +67,7 @@ public class PublisherConfiguration {
                 .send(integers)
                 .delayElements(Duration.ofMillis(5))
                 .doOnNext(data -> System.out.println(String.format("Sent: %s", data)))
-                .subscribe();
+                .subscribe();*/
     }
 
 }
